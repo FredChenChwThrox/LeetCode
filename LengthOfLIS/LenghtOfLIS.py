@@ -54,6 +54,24 @@ class Solution(object):
             max_length = max(dp_list)
         return max_length
 
+    @staticmethod
+    @pysnooper.snoop()
+    def lengthOfLIS3(nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        tails = []
+        max_length = 0
+        if len(nums) > 0:
+
+            for i in range(0, len(nums)):
+                for j in range(0, i):
+                    if nums[i] > nums[j]:
+                        dp_list[i] = max(dp_list[i], dp_list[j]+1)
+            max_length = max(dp_list)
+        return max_length
+
 if __name__ == '__main__':
     list_in = [10,9,2,5,3,7,101,18]
     print(Solution.lengthOfLIS2(list_in))
